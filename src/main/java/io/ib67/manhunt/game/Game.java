@@ -8,7 +8,6 @@ import io.ib67.manhunt.gui.Vote;
 import io.ib67.manhunt.radar.Radar;
 import io.ib67.manhunt.radar.SimpleRadar;
 import io.ib67.manhunt.setting.I18n;
-import io.ib67.manhunt.util.LodestoneCompass;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.bukkit.*;
@@ -55,7 +54,7 @@ public class Game {
             inGamePlayers.stream()
                     .filter(e -> e.getRole() == GamePlayer.Role.HUNTER && !e.getPlayer().getInventory().contains(Material.COMPASS))
                     .forEach(e -> {
-                        e.getPlayer().getInventory().addItem(LodestoneCompass.allocate(e.getPlayer(), runner.getLocation()));
+                        e.getPlayer().setCompassTarget(runner.getLocation());
                         e.getPlayer().sendMessage(ManHunt.getInstance().getLanguage().GAMING.HUNTER.COMPASS_ARRIVED);
                     });
         } else {

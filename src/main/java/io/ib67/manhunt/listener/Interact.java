@@ -4,7 +4,6 @@ import io.ib67.manhunt.ManHunt;
 import io.ib67.manhunt.game.Game;
 import io.ib67.manhunt.game.GamePhase;
 import io.ib67.manhunt.game.GamePlayer;
-import io.ib67.manhunt.util.LodestoneCompass;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Location;
@@ -53,7 +52,7 @@ public class Interact implements Listener {
                             if (runner.getLocation().distance(event.getPlayer().getLocation()) >= ManHunt.getInstance().getMainConfig().distanceFar) {
                                 actBarMsg.addExtra(" "+String.format(ManHunt.getInstance().getLanguage().GAMING.HUNTER.ACTION_BAR_RADOR_PART_FAR, ManHunt.getInstance().getMainConfig().distanceFar));
                             }
-                            setItem.accept(i, LodestoneCompass.allocate(event.getPlayer(), runner.getLocation()));
+                            event.getPlayer().setCompassTarget(runner.getLocation());
                             event.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, actBarMsg);
                         } else {
                             if (ManHunt.getInstance().getMainConfig().blockCompassWhenDifferentWorld) {
@@ -62,7 +61,7 @@ public class Interact implements Listener {
                             } else {
                                 if (lastLoc.containsKey(event.getPlayer().getWorld().getName())) {
                                     Location loc = lastLoc.get(event.getPlayer().getWorld().getName());
-                                    setItem.accept(i, LodestoneCompass.allocate(event.getPlayer(), loc));
+                                    event.getPlayer().setCompassTarget(loc);
                                     if (loc.distance(event.getPlayer().getLocation()) >= ManHunt.getInstance().getMainConfig().distanceFar) {
                                         actBarMsg.addExtra(String.format(ManHunt.getInstance().getLanguage().GAMING.HUNTER.ACTION_BAR_RADOR_PART_FAR, ManHunt.getInstance().getMainConfig().distanceFar));
                                     }
