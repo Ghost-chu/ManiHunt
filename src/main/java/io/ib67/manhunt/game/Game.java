@@ -75,7 +75,6 @@ public class Game {
         }
         Bukkit.getWorld("world").setDifficulty(Difficulty.valueOf(ManHunt.getInstance().getMainConfig().difficulty));
         Bukkit.getWorld("world").setGameRule(GameRule.DO_DAYLIGHT_CYCLE, true);
-        Bukkit.getWorld("world").setGameRule(GameRule.RANDOM_TICK_SPEED,10);
         phase = GamePhase.STARTING;
         startTime = System.currentTimeMillis();
         this.runner = runner;
@@ -132,12 +131,16 @@ public class Game {
         String title = result == GameResult.HUNTER_WIN ?
                 ManHunt.getInstance().getLanguage().GAMING.HUNTER.WON :
                 ManHunt.getInstance().getLanguage().GAMING.RUNNER.WON;
-        inGamePlayers.stream().map(GamePlayer::getPlayer).forEach(p -> {
-            if (p == null) return;
+
+        Bukkit.getOnlinePlayers().forEach(p->{
+            if( p == null ){
+                return;
+            }
             p.setGameMode(GameMode.SPECTATOR);
             p.teleport(Bukkit.getWorlds().get(0).getSpawnLocation());
             p.sendTitle(title, "", 20, 2 * 20, 20);
         });
+
         gameStat.readySerialization();
         String report = new Gson().toJson(gameStat);
         String statId;
