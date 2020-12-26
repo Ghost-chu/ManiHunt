@@ -75,6 +75,7 @@ public class Game {
         }
         Bukkit.getWorld("world").setDifficulty(Difficulty.valueOf(ManHunt.getInstance().getMainConfig().difficulty));
         Bukkit.getWorld("world").setGameRule(GameRule.DO_DAYLIGHT_CYCLE, true);
+        Bukkit.getWorld("world").setGameRule(GameRule.RANDOM_TICK_SPEED,10);
         phase = GamePhase.STARTING;
         startTime = System.currentTimeMillis();
         this.runner = runner;
