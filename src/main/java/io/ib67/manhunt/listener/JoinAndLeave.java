@@ -27,5 +27,7 @@ public class JoinAndLeave implements Listener {
     public void onLeave(PlayerQuitEvent event) {
         if (ManHunt.getInstance().getGame().getPhase() == GamePhase.WAITING_FOR_PLAYER)
             ManHunt.getInstance().getGame().kickPlayer(event.getPlayer().getName());
+        if(Bukkit.getOnlinePlayers().size() == 0 && ManHunt.getInstance().getGame().getPhase() != GamePhase.WAITING_FOR_PLAYER)
+            Bukkit.getServer().shutdown();
     }
 }

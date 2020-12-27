@@ -27,17 +27,23 @@ public class GameStat {
 
         switch (gamePhase){
             case GETTING_STARTED:
+                ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().sendMessage("阶段补给已送达你的背包"));
                 ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().getInventory().addItem(new ItemStack(Material.BREAD,5)));
             case IRON_ARMOR:
+                ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().sendMessage("阶段补给已送达你的背包"));
                 ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().getInventory().addItem(new ItemStack(Material.IRON_INGOT,8)));
             case IN_NETHER:
+                ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().sendMessage("阶段补给已送达你的背包"));
                 ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().getInventory().addItem(new ItemStack(Material.OBSIDIAN,2)));
                 ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().getInventory().addItem(new ItemStack(Material.FLINT,1)));
             case BLAZE_ROD_GOT:
+                ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().sendMessage("阶段补给已送达你的背包"));
                 ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().getInventory().addItem(new ItemStack(Material.BLAZE_POWDER, 2)));
             case FIND_STRONGHOLD:
-                ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().getInventory().addItem(new ItemStack(Material.ENDER_EYE, 6)));
+                ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().sendMessage("阶段补给已送达你的背包"));
+                ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().getInventory().addItem(new ItemStack(Material.ENDER_EYE, 2)));
             case IN_END:
+                ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().sendMessage("阶段补给已送达你的背包"));
                 ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().getInventory().addItem(new ItemStack(Material.ARROW, 32)));
             case KILLED_THE_DRAGON:
                 ManHunt.getInstance().getGame().getInGamePlayers().forEach(p->p.getPlayer().getInventory().addItem(new ItemStack(Material.CAKE, 1)));

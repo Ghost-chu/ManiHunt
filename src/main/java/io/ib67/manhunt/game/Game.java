@@ -103,6 +103,7 @@ public class Game {
         initRador();
         phase = GamePhase.STARTED;
         gameStart.accept(this);
+
     }
 
     private void airDrop(Player runner) {
